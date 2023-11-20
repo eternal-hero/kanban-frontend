@@ -1,0 +1,139 @@
+<div class="flex m-auto">
+    <div class="w-1/5 px-1 min-w-[300px]">
+        <h1 class="ticket_card_title my-3">To do</h1>
+        <div class="item-container-section overflow-y-auto">
+            <div class="ticket_card">
+                <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+                    [cdkDropListConnectedTo]="[qaList, designList, inDevList, planList]"
+                    (cdkDropListDropped)="drop($event, 1)" class="min-h-[90%]">
+                    @for (item of todo; track item) {
+                    <div cdkDrag class="text-center ticket_card_item_todo">
+                        <h4 class="text-2xl text-left">{{item.title}}</h4>
+                        <div class="text-left my-2">
+                            @for (tag of item.tags; track tag) {
+                            <button class="ticket_card_tag_item  text-sm">{{tag.name}}</button>
+                            }
+                        </div>
+                        <div class="text-right">
+                            <div class="ticket_card_startDate text-sm text-[#777]">Start: {{item.startDate |
+                                date:'MM/dd/yyyy'}}</div>
+                            <div class="ticket_card_endDate text-sm text-[#777]">End: {{item.endDate |
+                                date:'MM/dd/yyyy'}}</div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-1/5 px-1 min-w-[300px]">
+        <h1 class="ticket_card_title my-3">Planned</h1>
+        <div class="item-container-section overflow-y-auto">
+            <div class="ticket_card ">
+                <div cdkDropList #planList="cdkDropList" [cdkDropListData]="planned"
+                    [cdkDropListConnectedTo]="[qaList, todoList, designList,inDevList]"
+                    (cdkDropListDropped)="drop($event, 2)" class="min-h-[90%]">
+                    @for (item of planned; track item) {
+                    <div cdkDrag class="text-center ticket_card_item_done">
+                        <h4 class="text-2xl text-left">{{item.title}}</h4>
+                        <div class="text-left my-2">
+                            @for (tag of item.tags; track tag) {
+                            <button class="ticket_card_tag_item  text-sm">{{tag.name}}</button>
+                            }
+                        </div>
+                        <div class="text-right">
+                            <div class="ticket_card_startDate text-sm text-[#777]">Start: {{item.startDate |
+                                date:'MM/dd/yyyy'}}</div>
+                            <div class="ticket_card_endDate text-sm text-[#777]">End: {{item.endDate |
+                                date:'MM/dd/yyyy'}}</div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-1/5 px-1 min-w-[300px]">
+        <h1 class="ticket_card_title my-3">Designing</h1>
+        <div class="item-container-section overflow-y-auto">
+            <div class="ticket_card ">
+                <div cdkDropList #designList="cdkDropList" [cdkDropListData]="design"
+                    [cdkDropListConnectedTo]="[todoList, qaList, inDevList, planList]"
+                    (cdkDropListDropped)="drop($event, 3)" class="min-h-[90%]">
+                    @for (item of design; track item) {
+                    <div cdkDrag class="text-center ticket_card_item_design">
+                        <h4 class="text-2xl text-left">{{item.title}}</h4>
+                        <div class="text-left my-2">
+                            @for (tag of item.tags; track tag) {
+                            <button class="ticket_card_tag_item  text-sm">{{tag.name}}</button>
+                            }
+                        </div>
+                        <div class="text-right">
+                            <div class="ticket_card_startDate text-sm text-[#777]">Start: {{item.startDate |
+                                date:'MM/dd/yyyy'}}</div>
+                            <div class="ticket_card_endDate text-sm text-[#777]">End: {{item.endDate |
+                                date:'MM/dd/yyyy'}}</div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-1/5 px-1 min-w-[300px]">
+        <h1 class="ticket_card_title my-3">In Dev</h1>
+        <div class="item-container-section overflow-y-auto">
+            <div class="ticket_card ">
+                <div cdkDropList #inDevList="cdkDropList" [cdkDropListData]="inDev"
+                    [cdkDropListConnectedTo]="[todoList, qaList, designList, planList]"
+                    (cdkDropListDropped)="drop($event, 4)" class="min-h-[90%]">
+                    @for (item of inDev; track item) {
+                    <div cdkDrag class="text-center ticket_card_item_inDev">
+                        <h4 class="text-2xl text-left">{{item.title}}</h4>
+                        <div class="text-left my-2">
+                            @for (tag of item.tags; track tag) {
+                            <button class="ticket_card_tag_item  text-sm">{{tag.name}}</button>
+                            }
+                        </div>
+                        <div class="text-right">
+                            <div class="ticket_card_startDate text-sm text-[#777]">Start: {{item.startDate |
+                                date:'MM/dd/yyyy'}}</div>
+                            <div class="ticket_card_endDate text-sm text-[#777]">End: {{item.endDate |
+                                date:'MM/dd/yyyy'}}</div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-1/5 px-1 min-w-[300px]">
+        <h1 class="ticket_card_title my-3">QA</h1>
+        <div class="item-container-section overflow-y-auto">
+            <div class="ticket_card ">
+                <div cdkDropList #qaList="cdkDropList" [cdkDropListData]="qa"
+                    [cdkDropListConnectedTo]="[todoList, designList, inDevList, planList]"
+                    (cdkDropListDropped)="drop($event, 5)" class="min-h-[90%]">
+                    @for (item of qa; track item) {
+                    <div cdkDrag class="text-center ticket_card_item_qa">
+                        <h4 class="text-2xl text-left">{{item.title}}</h4>
+                        <div class="text-left my-2">
+                            @for (tag of item.tags; track tag) {
+                            <button class="ticket_card_tag_item  text-sm">{{tag.name}}</button>
+                            }
+                        </div>
+                        <div class="text-right">
+                            <div class="ticket_card_startDate text-sm text-[#777]">Start: {{item.startDate|
+                                date:'MM/dd/yyyy'}}</div>
+                            <div class="ticket_card_endDate text-sm text-[#777]">End: {{item.endDate |
+                                date:'MM/dd/yyyy'}}</div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-modal (rerender)="onRerender()"></app-modal>
+</div>

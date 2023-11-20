@@ -1,0 +1,75 @@
+<button class="add_button " mat-fab data-modal-target="authentication-modal" data-modal-toggle="authentication-modal">
+    <mat-icon>add</mat-icon>
+</button>
+<div id="authentication-modal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Add new ticket
+                </h3>
+                <button type="button" id="close-modal-button"
+                    class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="authentication-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <div class="p-4 md:p-5">
+                <form class="space-y-4" action="#">
+                    <div>
+                        <mat-form-field class="w-full" (keyup)="onTitle($event)">
+                            <mat-label>Title</mat-label>
+                            <input matInput [value]="this.title">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="w-full">
+                            <mat-label>Tags</mat-label>
+                            <mat-chip-grid #chipGrid aria-label="Enter tags">
+                                @for (tag of tags; track tag) {
+                                <mat-chip-row (removed)="remove(tag)" [editable]="true" (edited)="edit(tag, $event)"
+                                    [aria-description]="'press enter to edit ' + tag.name">
+                                    {{tag.name}}
+                                    <button matChipRemove [attr.aria-label]="'remove ' + tag.name">
+                                        <mat-icon>cancel</mat-icon>
+                                    </button>
+                                </mat-chip-row>
+                                }
+                                <input placeholder="New tag..." [matChipInputFor]="chipGrid"
+                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)" />
+                            </mat-chip-grid>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="w-full">
+                            <mat-label>Enter a date range</mat-label>
+                            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                                <input matStartDate formControlName="start" placeholder="Start date"
+                                    [value]="dateRange">
+                                <input matEndDate formControlName="end" placeholder="End date" [value]="dateRange">
+                            </mat-date-range-input>
+                            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+                            @if (range.controls.start.hasError('matStartDateInvalid')) {
+                            <mat-error>Invalid start date</mat-error>
+                            }
+                            @if (range.controls.end.hasError('matEndDateInvalid')) {
+                            <mat-error>Invalid end date</mat-error>
+                            }
+                        </mat-form-field>
+                    </div>
+                    <button type="button" (click)="addTicket(range.value)"
+                        class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

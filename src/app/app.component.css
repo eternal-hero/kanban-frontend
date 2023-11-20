@@ -1,0 +1,115 @@
+.ticket_card {
+    height: 94vh;
+    padding: 10px;
+    max-height: 200vh;
+
+}
+
+.ticket_card_title {
+    font-size: 22px;
+    font-weight: 650;
+    margin: 10px;
+}
+
+.item-container-section {
+    max-height: calc(100vh - 55px);
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+::-webkit-scrollbar {
+    height: 7px;
+    width: 9px;
+    background-color: rgb(243, 235, 235);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8d8686;
+    border-radius: 10px;
+}
+
+.ticket_card_item_todo {
+    margin: 10px 0px;
+    border-radius: 4px;
+    padding: 10px;
+    min-height: 100px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-top: 5px solid red;
+}
+
+.ticket_card_item_done {
+    margin: 10px 0px;
+    border-radius: 4px;
+    padding: 10px;
+    min-height: 100px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-top: 5px solid rgb(0, 255, 0);
+}
+
+.ticket_card_item_design {
+    margin: 10px 0px;
+    border-radius: 4px;
+    padding: 10px;
+    min-height: 100px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-top: 5px solid rgb(23, 75, 3);
+}
+
+.ticket_card_item_qa {
+    margin: 10px 0px;
+    border-radius: 4px;
+    padding: 10px;
+    min-height: 100px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-top: 5px solid rgb(75, 58, 3);
+}
+
+
+.ticket_card_item_inDev {
+    margin: 10px 0px;
+    border-radius: 4px;
+    padding: 10px;
+    min-height: 100px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-top: 5px solid rgb(26, 84, 192);
+}
+
+.ticket_card_tag_item {
+    border: 1px solid grey;
+    margin: 2px;
+    padding: 1px 3px;
+    border-radius: 5px;
+}
+
+.example-list {
+    border: solid 1px #ccc;
+    border-radius: 10px;
+    min-height: 80px;
+    background: white;
+    overflow: hidden;
+    display: block;
+}
+
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+    border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
