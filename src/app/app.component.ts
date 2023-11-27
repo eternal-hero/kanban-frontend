@@ -62,10 +62,10 @@ export class CdkDragDropConnectedSortingExample implements OnInit {
                 event.currentIndex,
             );
         }
+
         axios.post('http://localhost:5000/api/tickets/updateTicket', {
             targetId: containerId,
-            itemId: event.container.data[event.currentIndex]._id,
-            positionIndex: event.currentIndex
+            containerData: event.container.data,
         })
             .then(function (response) {
                 console.log(response);

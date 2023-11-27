@@ -1,5 +1,5 @@
 .ticket_card {
-    height: 94vh;
+    height: calc(100vh - 60px);
     padding: 10px;
     max-height: 200vh;
 
@@ -12,7 +12,7 @@
 }
 
 .item-container-section {
-    max-height: calc(100vh - 55px);
+    max-height: 100vh;
     background-color: rgba(255, 255, 255, 0.4);
 }
 
@@ -26,6 +26,27 @@
     background: #8d8686;
     border-radius: 10px;
 }
+
+.draft-section {
+    border-top: 6px solid red;
+}
+
+.planned-section {
+    border-top: 6px solid rgb(0, 255, 0);
+}
+
+.designing-section {
+    border-top: 6px solid rgb(23, 75, 3);
+}
+
+.indev-section {
+    border-top: 6px solid rgb(26, 84, 192);
+}
+
+.qa-section {
+    border-top: 6px solid rgb(75, 58, 3);
+}
+
 
 .ticket_card_item_todo {
     margin: 10px 0px;
@@ -74,7 +95,8 @@
 }
 
 .ticket_card_tag_item {
-    border: 1px solid grey;
+    background-color: #777;
+    color: white;
     margin: 2px;
     padding: 1px 3px;
     border-radius: 5px;
